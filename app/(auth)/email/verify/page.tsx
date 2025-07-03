@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link" 
 
 //{ searchParams: { [key: string]: string | string[] | undefined } }
-const EmailVerifyPage = ({ searchParams }: { searchParams?: Record<string, string | string[] | undefined> }) => {
+const EmailVerifyPage = ({ searchParams }: any) => {
   const code = searchParams?.code
   const message = searchParams?.message
 
