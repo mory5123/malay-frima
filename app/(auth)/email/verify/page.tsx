@@ -1,12 +1,13 @@
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
-export default function EmailVerifyPage({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | undefined }
-}) {
-  const { code, message } = searchParams
+type Props = {
+  searchParams?: { [key: string]: string | string[] | undefined }
+}
+
+const EmailVerifyPage = ({ searchParams }: Props) => {
+  const code = searchParams?.code
+  const message = searchParams?.message
 
   let displayMessage = ""
 
@@ -34,3 +35,5 @@ export default function EmailVerifyPage({
     </div>
   )
 }
+
+export default EmailVerifyPage
