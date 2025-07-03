@@ -4,13 +4,13 @@ import { Suspense } from "react"
 import BlogEdit from "@/components/blog/BlogEdit"
 import Loading from "@/app/loading"
 
-interface BlogEditPageProps {
+/*interface BlogEditPageProps {
     params: {
         blogId: string
     }
-}
+}*/
 
-const BlogEditPage = async ({ params }: BlogEditPageProps) => {
+const BlogEditPage = async ({ params }) => {
     const { blogId } = await params
     const supabase = await createClient()
 
