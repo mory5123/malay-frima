@@ -1,22 +1,16 @@
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
-type Props = {
-  searchParams?: { [key: string]: string | string[] | undefined }
-}
-
-const EmailVerifyPage = ({ searchParams }: Props) => {
+const EmailVerifyPage = ({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) => {
   const code = searchParams?.code
   const message = searchParams?.message
 
   let displayMessage = ""
 
   if (code) {
-    displayMessage =
-      "メールアドレスの変更が確認されました。ログインしてください。"
+    displayMessage = "メールアドレスの変更が確認されました。ログインしてください。"
   } else if (message) {
-    displayMessage =
-      "確認リンクが受け付けられました。もう一方のメールアドレスに送信されたリンクも確認してください。"
+    displayMessage = "確認リンクが受け付けられました。もう一方のメールアドレスに送信されたリンクも確認してください。"
   }
 
   return (
