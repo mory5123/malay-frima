@@ -1,8 +1,12 @@
+// ✅ 正しいページコンポーネントの定義方法
 import { Button } from "@/components/ui/button"
-import Link from "next/link" 
+import Link from "next/link"
 
-//{ searchParams: { [key: string]: string | string[] | undefined } }
-const EmailVerifyPage = ({ searchParams }: any) => {
+export default function EmailVerifyPage({
+  searchParams,
+}: {
+  searchParams?: Record<string, string | string[] | undefined>
+}) {
   const code = searchParams?.code
   const message = searchParams?.message
 
@@ -30,5 +34,3 @@ const EmailVerifyPage = ({ searchParams }: any) => {
     </div>
   )
 }
-
-export default EmailVerifyPage
