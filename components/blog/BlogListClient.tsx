@@ -64,7 +64,7 @@ export default function BlogListClient() {
 
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
                 {blogs.map((blog) => (
-                    <BlogItem blog={blog} />  
+                    <BlogItem key={blog.id} blog={blog} />  
                 ))}
             </div>
 
