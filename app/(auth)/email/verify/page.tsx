@@ -1,11 +1,9 @@
-// ✅ 正しいページコンポーネントの定義方法
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
+//searchParams?: Record<string, string | string[] | undefined>
 export default function EmailVerifyPage({
-  searchParams,
-}: {
-  searchParams?: Record<string, string | string[] | undefined>
+  searchParams
 }) {
   const code = searchParams?.code
   const message = searchParams?.message
