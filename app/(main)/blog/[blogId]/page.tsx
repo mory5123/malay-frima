@@ -3,13 +3,13 @@ import { Suspense } from "react"
 import BlogDetail from "@/components/blog/BlogDetail"
 import Loading from "@/app/loading"
 
-interface BlogDetailPageProps {
+/*interface BlogDetailPageProps {
   params: {
     blogId: string
   }
-}
+}*/
 
-const BlogDetailPage = async ({ params }: BlogDetailPageProps) => {
+const BlogDetailPage = async ({ params }) => {
   const { blogId } = await params
   const supabase = await createClient()
 
