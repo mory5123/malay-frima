@@ -33,8 +33,9 @@ export async function POST(req: NextRequest) {
         } else {
           return NextResponse.json({ error: '認証コードが正しくありません' }, { status: 400 })
         }
-    } catch (error: any) {
+    } catch (error) {
         console.error(error);
-        return NextResponse.json({ error: error?.message || String(error) }, { status: 500 })
+        const message = error instanceof Error ? error.message : String(error);
+        return NextResponse.json({ error: message }, { status: 500 });
     }
 } 

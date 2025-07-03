@@ -3,6 +3,7 @@
 import { useState, useCallback, useEffect } from "react"
 import { X, ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 interface ImageGalleryProps {
     images: string[]
@@ -105,7 +106,7 @@ const ImageGallery = ({ images, alt = "image" }: ImageGalleryProps) => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {validImages.map((imageUrl, index) => (
                     <div key={index} className="relative cursor-pointer group">
-                        <img
+                        <Image
                             src={imageUrl}
                             alt={`${alt}-${index}`}
                             className="rounded object-cover w-full h-48 transition-transform duration-200 group-hover:scale-105"
@@ -148,7 +149,7 @@ const ImageGallery = ({ images, alt = "image" }: ImageGalleryProps) => {
                             onTouchMove={onTouchMove}
                             onTouchEnd={onTouchEnd}
                         >
-                            <img
+                            <Image
                                 src={validImages[currentIndex]}
                                 alt={`${alt}-${currentIndex}`}
                                 className="max-w-full max-h-full object-contain"

@@ -4,12 +4,13 @@ import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form"
-import { Loader2, CheckCircle, AlertCircle, Lock } from "lucide-react"
+import { Loader2, CheckCircle, AlertCircle } from "lucide-react"
 import { z } from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import toast from "react-hot-toast"
 import { createClient } from "@/utils/supabase/client"
+import {ProfileType} from "@/types"
 
 const PhoneSchema = z.object({
     countryCode: z.string().min(1, { message: "国番号を入力してください" }),
@@ -21,10 +22,10 @@ const PhoneSchema = z.object({
     const [isSent, setIsSent] = useState(false)
     const [isVerified, setIsVerified] = useState(false)
     const [error, setError] = useState("")
-    const [user, setUser] = useState<any>(null)
-    const [profile, setProfile] = useState<any>(null)
+    const [profile, setProfile] = useState<ProfileType|null>(null)
     const [loadingProfile, setLoadingProfile] = useState(true)
     const [code, setCode] = useState("")
+//    const [user, setUser] = useState<any>(null)
 
     const form = useForm<z.infer<typeof PhoneSchema>>({
         resolver: zodResolver(PhoneSchema),
@@ -39,7 +40,7 @@ const PhoneSchema = z.object({
             setLoadingProfile(true)
             const supabase = createClient()
             const { data: userData } = await supabase.auth.getUser()
-            setUser(userData?.user)
+            //setUser(userData?.user)
             if (userData?.user?.id) {
                 const { data: profileData } = await supabase
                     .from("profiles")
@@ -90,7 +91,11 @@ const PhoneSchema = z.object({
         
         } catch (e) {
         console.error("updateUser error:", e);
-        setError(e.message || "SMS送信に失敗しました")
+        if (e instanceof Error) {
+            setError(e.message);
+        } else {
+            setError("SMS送信に失敗しました");
+        }
         } finally {
         setIsPending(false)
         }
@@ -129,8 +134,12 @@ const PhoneSchema = z.object({
         const supabase = createClient()
         await supabase.auth.refreshSession()
         const { data, error} = await supabase.auth.getUser()
-        setUser(data.user)
+        //setUser(data.user)
         // profilesテーブルを更新
+        if (error || !data?.user?.id) {
+            setError("ユーザー情報の取得に失敗しました")
+            return
+        }
         
         if (data.user?.id) {
             const { error: profileError } = await supabase

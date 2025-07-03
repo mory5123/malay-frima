@@ -45,7 +45,7 @@ const BlogDetail = ({ blog, isMyBlog }: BlogDetailProps) => {
             try {
                 const res = await deleteBlog({
                     blogId: blog.id,
-                    imageUrl: blog.image_url,
+                    imageUrl: blog.image_url || null,
                     imageUrls: blog.image_urls || null,
                     userId: blog.user_id,
                 })

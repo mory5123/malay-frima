@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import { useRouter } from "next/navigation"
 import { createClient } from "@/utils/supabase/client"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -13,7 +12,6 @@ const ForgotPasswordPage = () => {
     const [isSending, setIsSending] = useState(false)
     const [success, setSuccess] = useState(false)
 
-    const router = useRouter()
     const supabase = createClient()
 
     const handleResetPassword = async (e: React.FormEvent) => {

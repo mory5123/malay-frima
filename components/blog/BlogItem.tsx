@@ -1,19 +1,14 @@
 "use client"
 
-import { BlogType } from "@/types"
+import { BlogItemProps } from "@/types"
 import Image from "next/image"
 import Link from "next/link"
 
-interface BlogItemProps {
-    blog: BlogType & {
-        profiles: {
-            name: string
-            avatar_url: string
-        }
-    }
-}
+type Props = {
+    blog: BlogItemProps;
+};
 
-const BlogItem = ({ blog }: BlogItemProps) => {
+const BlogItem = ({ blog }: Props) => {
     // image_urlsのみを使用し、最初の画像を表示
     const displayImageUrl = blog.image_urls && blog.image_urls.length > 0 
         ? blog.image_urls[0] 

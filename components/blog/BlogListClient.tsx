@@ -8,6 +8,7 @@ import { createClient } from "@/utils/supabase/client"
 import BlogItem from "./BlogItem"
 import Loading from "@/app/loading"
 import ClearSearchButton from "../search/ClearSearchButton"
+import { BlogItemProps } from "@/types"
 
 const PAGE_SIZE = 25
 
@@ -15,7 +16,7 @@ export default function BlogListClient() {
     const searchParams = useSearchParams()
     const searchQuery = searchParams.get("search") || ""
 
-    const [blogs, setBlogs] = useState<any[]>([])
+    const [blogs, setBlogs] = useState<BlogItemProps[]>([])
     const [loading, setLoading] = useState(true)
     const [page, setPage] = useState(1)
     const [totalCount, setTotalCount] = useState(0)
@@ -63,7 +64,7 @@ export default function BlogListClient() {
 
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
                 {blogs.map((blog) => (
-                    <BlogItem key={blog.id} blog={blog} />
+                    <BlogItem blog={blog} />  
                 ))}
             </div>
 

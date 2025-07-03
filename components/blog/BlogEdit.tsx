@@ -111,7 +111,7 @@ const BlogEdit = ({ blog }: BlogEditProps) => {
                 const res = await editBlog({
                     ...values,
                     blogId: blog.id,
-                    imageUrl: blog.image_url,
+                    imageUrl: blog.image_url || null,
                     base64Images,
                     userId: blog.user_id,
                 })

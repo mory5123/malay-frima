@@ -1,6 +1,6 @@
 "use server"
 
-import { SignupSchema } from "@/schemas"
+import { SignupSchema,ResetPasswordSchema,LoginSchema,PasswordSchema } from "@/schemas"
 import { createClient } from "@/utils/supabase/server"
 import { z } from "zod"
 

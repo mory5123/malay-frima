@@ -15,7 +15,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Loader2, CheckCircle } from "lucide-react"
+import { Loader2 } from "lucide-react"
 import { ProfileSchema } from "@/schemas"
 import { updateProfile } from "@/actions/user"
 import { useRouter } from "next/navigation"
@@ -39,7 +39,7 @@ const Profile = ({ profile }: ProfileProps) => {
             dataURL: profile.avatar_url || "/default.png",
         },
     ])
-    const [user, setUser] = useState<any>(null)
+    //const [user, setUser] = useState<any>(null)
 
     const form = useForm<z.infer<typeof ProfileSchema>>({
         resolver: zodResolver(ProfileSchema),
@@ -53,8 +53,8 @@ const Profile = ({ profile }: ProfileProps) => {
         const fetchUser = async () => {
             const supabase = createClient()
             await supabase.auth.refreshSession()
-            const { data } = await supabase.auth.getUser()
-            setUser(data.user)
+            await supabase.auth.getUser()
+            //setUser(data.user)
         }
         fetchUser()
     }, [])

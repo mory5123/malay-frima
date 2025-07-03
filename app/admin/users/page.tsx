@@ -26,8 +26,12 @@ export default function AdminUserUpdatePage() {
         const data = await res.json()
         if (!res.ok) throw new Error(data.error || "更新に失敗しました")
         setResult("更新に成功しました")
-        } catch (e: any) {
-        setResult(e.message || "更新に失敗しました")
+        } catch (e) {
+        if (e instanceof Error) {
+            setResult(e.message);
+        } else {
+            setResult("更新に失敗しました");
+        }
         } finally {
         setLoading(false)
         }

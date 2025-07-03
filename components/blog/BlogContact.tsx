@@ -44,30 +44,35 @@ const BlogContact = ({ blog,sender_email,receiver_email }: BlogContactProps) => 
 
         // 送信
         const onSubmit = (values: z.infer<typeof ContactSchema>) => {
-            setError("")
+                setError("")
 
-            startTransition(async () => {
-                try {
-                    const res = await sendContact({
-                        title: values.title,
-                        content: values.content,
-                        sender_email: sender_email ?? '',
-                        receiver_email: receiver_email ?? '',
-                    })
+                startTransition(async () => {
+                        try {
+                        const res = await sendContact({
+                                title: values.title,
+                                content: values.content,
+                                sender_email: sender_email ?? '',
+                                receiver_email: receiver_email ?? '',
+                        })
 
-                    if (res?.error) {
-                        setError(res.error)
-                        return
-                    }
+                        if (res?.error) {
+                                setError(res.error)
+                                return
+                        }
 
-                    toast.success("メールを送信しました！")
-                    router.push(`/blog/${blog.id}`)
-                    router.refresh()
-                } catch (error) {
-                    setError("エラーが発生しました")
+                        toast.success("メールを送信しました！")
+                        router.push(`/blog/${blog.id}`)
+                        router.refresh()
+                        } catch (error) {
+                        console.error("メール送信エラー:", error)
+                        const message = error instanceof Error
+                        ? error.message
+                        : "不明なエラーが発生しました"
+
+                        setError(`送信に失敗しました: ${message}`)
+                        }
+                })
                 }
-            })
-        }
 
         return (
                 <div className="mx-auto max-w-screen-md">

@@ -24,12 +24,13 @@ export async function POST(req: NextRequest) {
         // return NextResponse.json({ success: true, requestId: resp.request_id });
         console.log('Twilio Verify API送信内容:', { to, verifySid, channel: 'sms' });
         await client.verify.v2.services(verifySid).verifications.create({
-          to,
-          channel: 'sms',
+            to,
+            channel: 'sms',
         })
         return NextResponse.json({ success: true })
-    } catch (error: any) {
+    } catch (error) {
         console.error(error);
-        return NextResponse.json({ error: error?.message || String(error) }, { status: 500 })
+        const message = error instanceof Error ? error.message : String(error);
+        return NextResponse.json({ error: message }, { status: 500 });
     }
 } 

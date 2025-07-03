@@ -20,7 +20,7 @@ const ResetPasswordPage = () => {
         supabase.auth.getSession().catch((err) => {
         console.error("セッション取得エラー:", err)
         })
-    }, [])
+    }, [supabase.auth])
 
     const handleUpdatePassword = async (e: React.FormEvent) => {
         e.preventDefault()

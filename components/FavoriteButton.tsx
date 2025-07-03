@@ -13,12 +13,10 @@ interface FavoriteButtonProps {
 const FavoriteButton = ({ postId }: FavoriteButtonProps) => {
   const [isFavorite, setIsFavorite] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
-  const supabase = createClient()
   const router = useRouter()
+  const supabase = createClient()
 
   useEffect(() => {
-    checkFavoriteStatus()
-  }, [postId])
 
   const checkFavoriteStatus = async () => {
     try {
@@ -42,6 +40,9 @@ const FavoriteButton = ({ postId }: FavoriteButtonProps) => {
       setIsLoading(false)
     }
   }
+
+  checkFavoriteStatus()
+}, [postId,supabase])
 
   const toggleFavorite = async () => {
     try {

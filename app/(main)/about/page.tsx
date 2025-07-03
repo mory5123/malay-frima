@@ -1,4 +1,4 @@
-import { FaRegLightbulb, FaUserShield, FaIdCard,FaWhatsapp } from "react-icons/fa"
+import { FaInfoCircle, FaUserCheck, FaUserShield, FaIdCard,FaWhatsapp } from "react-icons/fa"
 import {
     FaPlusCircle,
     FaEnvelopeOpenText,
@@ -8,14 +8,6 @@ import {
     FaSearch,
     FaSyncAlt,
 } from "react-icons/fa";
-
-import {
-    FaInfoCircle,
-    FaUserCheck,
-    FaHandsHelping,
-    FaMoneyBillAlt,
-    FaUserFriends,
-} from 'react-icons/fa';
 
 export default function About() {
     return (
