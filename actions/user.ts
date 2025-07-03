@@ -1,6 +1,6 @@
 "use server"
 
-import { ProfileSchema } from "@/schemas"
+import { EmailSchema, ProfileSchema } from "@/schemas"
 import { createClient } from "@/utils/supabase/server"
 import { z } from "zod"
 import { v4 as uuidv4 } from "uuid"
