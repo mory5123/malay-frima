@@ -4,13 +4,13 @@ import { Suspense } from "react"
 import BlogContact from "@/components/blog/BlogContact"
 import Loading from "@/app/loading"
 
-interface BlogContactPageProps {
+/*interface BlogContactPageProps {
     params: {
         blogId: string
     }
-}
+}*/
 
-const BlogContactPage = async ({ params }: BlogContactPageProps) => {
+const BlogContactPage = async ({ params }) => {
     const { blogId } = await params
     const supabase = await createClient()
 
