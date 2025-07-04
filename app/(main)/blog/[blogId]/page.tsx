@@ -9,7 +9,13 @@ import Loading from "@/app/loading"
   }
 }*/
 
-const BlogDetailPage = async ({ params }) => {
+type Props = {
+    params: Promise<{
+    blogId: string
+    }>
+}
+
+const BlogDetailPage = async ({ params }:Props) => {
   const { blogId } = await params
   const supabase = await createClient()
 

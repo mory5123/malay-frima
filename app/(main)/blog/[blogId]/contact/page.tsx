@@ -4,15 +4,23 @@ import { Suspense } from "react"
 import BlogContact from "@/components/blog/BlogContact"
 import Loading from "@/app/loading"
 
+type Props = {
+    params: Promise<{
+    blogId: string
+    }>
+}
+
 /*interface BlogContactPageProps {
     params: {
         blogId: string
     }
 }*/
 
-const BlogContactPage = async ({ params }) => {
+const BlogContactPage = async ({ params }: Props) => {
     const { blogId } = await params
     const supabase = await createClient()
+    //const blogId = params.blogId
+    //const supabase =  createClient()
 
     const { data: userData } = await supabase.auth.getUser()
     const user = userData?.user

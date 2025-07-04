@@ -15,6 +15,7 @@ const ImageGallery = ({ images, alt = "image" }: ImageGalleryProps) => {
     const [currentIndex, setCurrentIndex] = useState(0)
     const [touchStart, setTouchStart] = useState<number | null>(null)
     const [touchEnd, setTouchEnd] = useState<number | null>(null)
+    const [modalImgSize, setModalImgSize] = useState<{width: number, height: number}>({width: 800, height: 600});
 
     // 空の画像URLをフィルタリング
     const validImages = images && images.length > 0 ? images.filter(img => img && img.trim() !== "") : ["/noImage.png"]
@@ -109,6 +110,8 @@ const ImageGallery = ({ images, alt = "image" }: ImageGalleryProps) => {
                         <Image
                             src={imageUrl}
                             alt={`${alt}-${index}`}
+                            width={400}
+                            height={256}
                             className="rounded object-cover w-full h-48 transition-transform duration-200 group-hover:scale-105"
                             onClick={() => openModal(index)}
                         />
@@ -152,7 +155,13 @@ const ImageGallery = ({ images, alt = "image" }: ImageGalleryProps) => {
                             <Image
                                 src={validImages[currentIndex]}
                                 alt={`${alt}-${currentIndex}`}
+                                width={modalImgSize.width}
+                                height={modalImgSize.height}
                                 className="max-w-full max-h-full object-contain"
+                                onLoad={e => {
+                                    const { naturalWidth, naturalHeight } = e.currentTarget;
+                                    setModalImgSize({ width: naturalWidth, height: naturalHeight });
+                                }}
                             />
                         </div>
 

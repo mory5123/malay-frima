@@ -8,16 +8,23 @@ const searchKey = process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY!
 
 const searchClient = algoliasearch(appId, searchKey)
 
-    export const searchBlogs = async (query: string) => {
+export const searchBlogs = async (query: string) => {
     const response = await searchClient.search([
         {
         indexName: 'blogs',
-        query,
         params: {
+            query,
             hitsPerPage: 20,
         },
         },
     ])
 
-    return response.results[0].hits // ✅ ここで hits を取り出す
+    const result = response.results[0]
+    
+    // 型ガードを使用してhitsプロパティの存在を確認
+    if ('hits' in result) {
+        return result.hits
     }
+    
+    return [] // hitsが存在しない場合は空配列を返す
+}

@@ -11,6 +11,18 @@ interface RecommendationResponse {
   recommendations: RecommendationItem[]
 }
 
+// Supabaseクエリの結果型を定義
+interface BlogWithProfile {
+  id: string
+  title: string
+  content: string
+  image_url: string | null
+  created_at: string
+  profiles: {
+    name: string
+  }[] | null
+}
+
 export async function POST(request: NextRequest) {
   try {
     const { blogId, title, content } = await request.json()
@@ -38,6 +50,9 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Failed to fetch blogs' }, { status: 500 })
     }
 
+    // 型アサーションを使用してblogsの型を明確にする
+    const typedBlogs = blogs as unknown as BlogWithProfile[]
+
     // ChatGPT APIに送信するプロンプトを作成
     const prompt = `
 以下の商品情報を基に、類似の商品を3つレコメンドしてください。
@@ -47,10 +62,11 @@ export async function POST(request: NextRequest) {
 内容: ${content}
 
 利用可能な商品一覧:
-${blogs?.map(blog => {
-  const profileName = Array.isArray(blog.profiles) 
-    ? blog.profiles[0]?.name || 'Unknown'
-    : blog.profiles?.name || 'Unknown'
+${typedBlogs?.map(blog => {
+  // profiles が null、空配列、または要素がある配列のすべてに対応
+  const profileName = blog.profiles && blog.profiles.length > 0 
+    ? blog.profiles[0].name 
+    : 'Unknown'
   return `
 - タイトル: ${blog.title}
 - 内容: ${blog.content.substring(0, 200)}...
@@ -115,7 +131,7 @@ ${blogs?.map(blog => {
     const recommendations = JSON.parse(data.choices[0].message.content) as RecommendationResponse
 
     // レコメンドされた商品の詳細情報を取得
-    const recommendedBlogs = blogs?.filter(blog => 
+    const recommendedBlogs = typedBlogs?.filter(blog => 
       recommendations.recommendations.some((rec: RecommendationItem) => rec.id === blog.id)
     )
 
@@ -128,4 +144,4 @@ ${blogs?.map(blog => {
     console.error('Recommendation error:', error)
     return NextResponse.json({ error: 'Failed to get recommendations' }, { status: 500 })
   }
-} 
+}

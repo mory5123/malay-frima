@@ -10,7 +10,13 @@ import Loading from "@/app/loading"
     }
 }*/
 
-const BlogEditPage = async ({ params }) => {
+type Props = {
+    params: Promise<{
+    blogId: string
+    }>
+}
+
+const BlogEditPage = async ({ params }:Props) => {
     const { blogId } = await params
     const supabase = await createClient()
 
