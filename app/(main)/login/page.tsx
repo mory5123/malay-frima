@@ -66,12 +66,12 @@ const LoginPage = () => {
     const handleGoogleLogin = async () => {
         try {
 
-            const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
+            //const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
             const { error } = await supabase.auth.signInWithOAuth({
                 provider: 'google',
                 options: {
-                    //redirectTo: `${window.location.origin}/auth/callback`
-                    redirectTo: siteUrl ? `${siteUrl}/auth/callback` : undefined
+                    redirectTo: `${window.location.origin}/auth/callback`
+                    //redirectTo: siteUrl ? `${siteUrl}/auth/callback` : undefined
                 }
             })
 
