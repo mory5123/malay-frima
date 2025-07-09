@@ -38,7 +38,7 @@ const Listing = async ({ profile }: ProfileProps) => {
 
     return (
         <Suspense fallback={<Loading />}>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
                 {blogsData.map((blog) => {
                     return <BlogItem key={blog.id} blog={blog} />
                 })}
