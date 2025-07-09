@@ -11,64 +11,73 @@ interface ShareButtonsProps {
 }
 
 const ShareButtons = ({ title, url, description }: ShareButtonsProps) => {
-  // Facebookシェア
-  const handleFacebookShare = () => {
-    const text = description ? `${title} - ${description}` : title;
-    const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(text)}`;
-    window.open(shareUrl, '_blank', 'width=600,height=400')
-    toast.success('Facebookでシェアしました')
-  }
+  const shareText = description ? `${title} - ${description}` : title
 
-  /* シンプルなら以下を使う。
-  const handleFacebookShare = () => {
-  const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
-  window.open(shareUrl, '_blank', 'width=600,height=400');
-  toast.success('Facebookでシェアしました');
-  }*/
+  const handleShare = async (platform: "facebook" | "twitter" | "instagram") => {
+    // 優先: Web Share API (モバイル対応)
+    if (navigator.share && platform !== "instagram") {
+      try {
+        await navigator.share({
+          title,
+          text: shareText,
+          url,
+        })
+        toast.success(`${platform === "facebook" ? "Facebook" : "Twitter"}でシェアしました`)
+        return
+      } catch {
+        toast.error("シェアがキャンセルされました")
+        return
+      }
+    }
 
-  // Twitterシェア
-  const handleTwitterShare = () => {
-    const text = description ? `${title} - ${description}` : title
-    const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`
-    window.open(shareUrl, '_blank', 'width=600,height=400')
-    toast.success('Twitterでシェアしました')
-  }
+    // fallback
+    if (platform === "facebook") {
+      const fbUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(shareText)}`
+      window.open(fbUrl, '_blank', 'width=600,height=400')
+      toast.success("Facebookでシェアしました")
+    }
 
-  // Instagramシェア（Instagramは直接的なシェアAPIがないため、コピー機能を提供）
-  const handleInstagramShare = () => {
-    const text = description ? `${title}\n\n${description}\n\n${url}` : `${title}\n\n${url}`
-    navigator.clipboard.writeText(text).then(() => {
-      toast.success('Instagram用のテキストをコピーしました。Instagramアプリで貼り付けてください。')
-    }).catch(() => {
-      toast.error('コピーに失敗しました')
-    })
+    if (platform === "twitter") {
+      const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(url)}`
+      window.open(twitterUrl, '_blank', 'width=600,height=400')
+      toast.success("Twitterでシェアしました")
+    }
+
+    if (platform === "instagram") {
+      const textToCopy = `${title}\n\n${description || ""}\n\n${url}`
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        toast.success("Instagram用テキストをコピーしました。Instagramアプリで貼り付けてください。")
+      }).catch(() => {
+        toast.error("コピーに失敗しました")
+      })
+    }
   }
 
   return (
     <div className="flex flex-col space-y-4">
       <h3 className="text-sm font-semibold text-gray-800">この投稿をシェア</h3>
       <div className="flex space-x-3">
-        {/* Twitterシェアボタン */}
+        {/* Twitter */}
         <Button
-          onClick={handleTwitterShare}
+          onClick={() => handleShare("twitter")}
           className="flex items-center space-x-2 bg-sky-500 hover:bg-sky-600 text-white"
         >
           <FaTwitter className="h-4 w-4" />
           <span>Twitter</span>
         </Button>
 
-        {/* Facebookシェアボタン */}
+        {/* Facebook */}
         <Button
-          onClick={handleFacebookShare}
+          onClick={() => handleShare("facebook")}
           className="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white"
         >
           <FaFacebook className="h-4 w-4" />
           <span>Facebook</span>
         </Button>
 
-        {/* Instagramシェアボタン */}
+        {/* Instagram */}
         <Button
-          onClick={handleInstagramShare}
+          onClick={() => handleShare("instagram")}
           className="flex items-center space-x-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white"
         >
           <FaInstagram className="h-4 w-4" />
@@ -79,4 +88,4 @@ const ShareButtons = ({ title, url, description }: ShareButtonsProps) => {
   )
 }
 
-export default ShareButtons 
+export default ShareButtons
