@@ -79,7 +79,7 @@ const Navigation = ({ user }: NavigationProps) => {
                     <div className="text-sm font-bold">
                         {user ? (
                             <div className="flex items-center space-x-5">
-                                <Link href="/about/#about" className="flex items-center text-xs sm:text-sm md:text-base text-gray-500 hover:underline mr-4 whitespace-nowrap">
+                                <Link href="/about/#about" className="flex items-center text-xs text-gray-500 hover:underline mr-4">
                                     <HelpCircle className="w-4 h-4 mr-1" /> 初めての方へ
                                 </Link>
                                 <Link href="/blog/new" className="inline-block">
