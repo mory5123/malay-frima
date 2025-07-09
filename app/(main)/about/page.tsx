@@ -100,7 +100,7 @@ export default function About() {
             <ul className="space-y-4 text-gray-700 ml-6">
                 <li className="flex items-start space-x-2 border-b border-dotted border-gray-300 pb-3">
                 <div className="flex items-start space-x-2">
-                <FaPlusCircle className="mt-1 text-black-900 w-5 h-5" />
+                <FaPlusCircle className="mt-1 text-black-900 w-6 h-6 sm:w-5 sm:h-5" />
                 <span>1. 商品情報・告知を投稿する</span>
                 </div>
                 <p className="text-sm text-gray-500 pl-7">（無料で投稿できます）</p>
@@ -108,7 +108,7 @@ export default function About() {
 
                 <li className="flex items-start space-x-2 border-b border-dotted border-gray-300 pb-3">
                 <div className="flex items-start space-x-2">
-                <FaEnvelopeOpenText className="mt-1 text-indigo-600 w-5 h-5" />
+                <FaEnvelopeOpenText className="mt-1 text-indigo-600 w-6 h-6 sm:w-5 sm:h-5" />
                 <span>2. 購入希望者からの問い合わせを受ける</span>
                 </div>
                 <p className="text-sm text-gray-500 pl-7">（登録したメールに連絡が来ます）</p>
@@ -116,7 +116,7 @@ export default function About() {
                 
                 <li className="flex items-start space-x-2 border-b border-dotted border-gray-300 pb-3">
                 <div className="flex items-start space-x-2">
-                <FaComments className="mt-1 text-teal-600 w-5 h-5" />
+                <FaComments className="mt-1 text-teal-600 w-6 h-6 sm:w-5 sm:h-5" />
                 <span>3. メールで受け渡し場所・日時を相談する</span>
                 </div>
                 <p className="text-sm text-gray-500 pl-7"></p>
@@ -124,7 +124,7 @@ export default function About() {
 
                 <li className="flex items-start space-x-2 border-b border-dotted border-gray-300 pb-3">
                 <div className="flex items-start space-x-2">
-                <FaHandshake className="mt-1 text-blue-900 w-5 h-5" />
+                <FaHandshake className="mt-1 text-blue-900 w-6 h-6 sm:w-5 sm:h-5" />
                 <span>4. 対面で商品の受け渡し・取引を完了する</span>
                 </div>
                 <p className="text-sm text-gray-500 pl-7">（お互いの合意がありましたら郵送も可能です）</p>
@@ -132,7 +132,7 @@ export default function About() {
 
                 <li className="flex items-start space-x-2 pb-3">
                 <div className="flex items-start space-x-2">
-                <FaTrashAlt className="mt-1 text-red-500 w-5 h-5" />
+                <FaTrashAlt className="mt-1 text-red-500 w-6 h-6 sm:w-5 sm:h-5" />
                 <span>5. 取引完了後、投稿を削除する</span>
                 </div>
                 <p className="text-sm text-gray-500 pl-7">（ご連絡頂ければ弊社で削除します）</p>
@@ -150,7 +150,7 @@ export default function About() {
 
                 <li className="flex items-start space-x-2 border-b border-dotted border-gray-300 pb-3">
                 <div className="flex items-start space-x-2">
-                <FaSearch className="mt-1 text-black-900 w-5 h-5" />
+                <FaSearch className="mt-1 text-black-900 w-6 h-6 sm:w-5 sm:h-5" />
                 <span>1. 欲しい商品を検索して探す</span>
                 </div>
                 <p className="text-sm text-gray-500 pl-7">（会員登録無しで閲覧可能です）</p>
@@ -158,7 +158,7 @@ export default function About() {
 
                 <li className="flex items-start space-x-2 border-b border-dotted border-gray-300 pb-3">
                 <div className="flex items-start space-x-2">
-                <FaEnvelopeOpenText className="mt-1 text-indigo-600 w-5 h-5" />
+                <FaEnvelopeOpenText className="mt-1 text-indigo-600 w-6 h-6 sm:w-5 sm:h-5" />
                 <span>2. 投稿者にメールで問い合わせする</span>
                 </div>
                 <p className="text-sm text-gray-500 pl-7">（登録したメールに連絡が来ます）</p>
@@ -166,7 +166,7 @@ export default function About() {
                 
                 <li className="flex items-start space-x-2 border-b border-dotted border-gray-300 pb-3">
                 <div className="flex items-start space-x-2">
-                <FaComments className="mt-1 text-teal-600 w-5 h-5" />
+                <FaComments className="mt-1 text-teal-600 w-6 h-6 sm:w-5 sm:h-5" />
                 <span>3. メールで受け渡し場所・日時を相談する</span>
                 </div>
                 <p className="text-sm text-gray-500 pl-7">（慣れていない方は、弊社が間に入って調整も可）</p>
@@ -174,7 +174,7 @@ export default function About() {
 
                 <li className="flex items-start space-x-2 pb-3">
                 <div className="flex items-start space-x-2">
-                <FaHandshake className="mt-1 text-blue-900 w-5 h-5" />
+                <FaHandshake className="mt-1 text-blue-900 w-6 h-6 sm:w-5 sm:h-5" />
                 <span>4. 対面で商品の受け渡し・取引を完了する</span>
                 </div>
                 <p className="text-sm text-gray-500 pl-7">（お互いの合意がありましたら郵送も可能です）</p>
@@ -293,7 +293,7 @@ export default function About() {
                 学校やマンションといった小さなコミュニティ内ではこうした情報共有もありますが、
                 もっとオープンで参加しやすい場所を作れたら――そんな思いから、このサービスを立ち上げました。
                 <br />
-                マレーシアで、日本人の皆さんにとって“メルカリ”や“ジモティー”のように身近で役に立つ存在になれれば嬉しく思います。
+                マレーシアで、日本人の皆さんにとって&quot;メルカリ&quot;や&quot;ジモティー&quot;のように身近で役に立つ存在になれれば嬉しく思います。
             </small>
             </p>
 </div>
