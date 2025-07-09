@@ -67,11 +67,8 @@ const Navigation = ({ user }: NavigationProps) => {
                             
                 <div className="hidden md:flex items-center justify-between">
                     <Link href="/" className="font-bold text-2xl text-blue-950 flex items-center">
-                        <Image src="/favicon.ico" alt="マレーシア・フリマのアイコン" width={39} height={39} className="mr-1"/> マレフリ
-                        
+                        <Image src="/favicon.ico" alt="マレーシア・フリマのアイコン" width={39} height={39} className="mr-1"/>マレフリ
                     </Link>
-                        
-                        
 
                     {isHomePage && (
                         <div className="flex-1 mx-8">
@@ -114,7 +111,7 @@ const Navigation = ({ user }: NavigationProps) => {
                 <div className="md:hidden">
                     <div className="flex items-center justify-between mb-4">
                         <Link href="/" className="font-bold text-2xl text-blue-950 flex items-center">
-                            <Image src="/favicon.ico" alt="マレーシア・フリマのアイコン" width={39} height={39} className="mr-1"/> マレーシア・フリマ
+                            <Image src="/favicon.ico" alt="マレーシア・フリマのアイコン" width={39} height={39} className="mr-1"/> マレフリ
                         </Link>
 
                         <div className="text-sm font-bold">
