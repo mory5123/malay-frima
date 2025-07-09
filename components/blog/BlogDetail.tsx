@@ -78,6 +78,24 @@ const BlogDetail = ({ blog, isMyBlog }: BlogDetailProps) => {
                         </div>
                         <FavoriteButton postId={blog.id} />
                     </div>
+
+                    {/* タイトル */}
+                    <div className="font-bold text-xl mb-3">{blog.title}</div>
+
+                    {/* 情報（縦並び、無地、黒文字、動的部分のみ太字） */}
+                    <div className="space-y-1 mb-4 text-sm text-black">
+                        <p>
+                            希望価格(MYR): <span className="font-bold">{blog.price}</span>
+                        </p>
+                        <p>
+                            取引場所: <span className="font-bold">{blog.location}</span>
+                        </p>
+                        <p>
+                            カテゴリー: <span className="font-bold">{blog.category}</span>
+                        </p>
+                    </div>
+                    
+                    {/*
                     <div className="font-bold text-2xl">{blog.title}</div>
                     <div className="flex flex-wrap gap-4 mb-2">
                         <span className="inline-block bg-blue-100 text-blue-700 px-3 py-1 rounded text-sm font-semibold">
@@ -89,7 +107,7 @@ const BlogDetail = ({ blog, isMyBlog }: BlogDetailProps) => {
                         <span className="inline-block bg-blue-100 text-blue-700 px-3 py-1 rounded text-sm font-semibold">
                             カテゴリー: {blog.category}
                         </span>
-                    </div>
+                    </div> */}
                     
                     {/* 複数画像表示 */}
                     <div className="space-y-4">
@@ -108,6 +126,7 @@ const BlogDetail = ({ blog, isMyBlog }: BlogDetailProps) => {
                         />
                     </div>
 
+                    {/* 
                     {isMyBlog && (
                         <div className="flex items-center justify-end space-x-3">
                             <Link href={`/blog/${blog.id}/edit`}>
@@ -125,7 +144,8 @@ const BlogDetail = ({ blog, isMyBlog }: BlogDetailProps) => {
                                 )}
                             </button>
                         </div>
-                    )}
+                    )}*/}
+
                     <FormError message={error} />
                 </div>
                 <div className="col-span-1">
@@ -164,7 +184,7 @@ const BlogDetail = ({ blog, isMyBlog }: BlogDetailProps) => {
                                 <Link href={`/blog/${blog.id}/edit`} className="w-full">
                                     <Button className="w-full flex items-center space-x-2" variant="outline">
                                         <FilePenLine className="w-5 h-5" />
-                                        <span>編集</span>
+                                        <span>この投稿を編集</span>
                                     </Button>
                                 </Link>
                                 <Button
@@ -178,7 +198,7 @@ const BlogDetail = ({ blog, isMyBlog }: BlogDetailProps) => {
                                     ) : (
                                         <Trash2 className="w-5 h-5" />
                                     )}
-                                    <span>削除</span>
+                                    <span>この投稿を削除</span>
                                 </Button>
                             </div>
                         )}
