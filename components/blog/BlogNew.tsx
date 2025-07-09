@@ -144,7 +144,7 @@ const BlogNew = ({ userId }: BlogNewProps) => {
                                     ファイル形式：jpg / jpeg / png / webp / heic
                                 </div>
                                 <div className="text-gray-400 text-xs">
-                                    ファイルサイズ：2MBまで
+                                    ファイルサイズ：１枚につき10MBまで
                                 </div>
                             </button>
                             <div className="flex gap-4">
