@@ -47,7 +47,7 @@ const SettingsLayout = ({ children }: { children: React.ReactNode }) => {
     return (
         <div className="mx-auto max-w-screen-md">
             <div className="grid grid-cols-3 gap-3">
-                <div className="col-span-1 space-y-2">
+                <div className="col-span-1 space-y-2 grid grid-cols-2 sm:grid-cols-1 gap-2">
                     {subNavigation.map((item, index) => (
                         <Button
                             asChild
