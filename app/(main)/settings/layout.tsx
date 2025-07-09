@@ -58,8 +58,8 @@ const SettingsLayout = ({ children }: { children: React.ReactNode }) => {
                                 pathname === item.href && "bg-gray-100"
                             )}
                         >
-                            <Link href={item.href} className="flex flex-wrap items-center text-xs sm:text-base whitespace-normal w-full min-w-0">
-                                <item.icon className="inline-block w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                            <Link href={item.href} className="grid grid-cols-[auto,1fr] items-center text-xs sm:text-base whitespace-normal w-full min-w-0">
+                                <item.icon className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                                 <span className="break-words w-full min-w-0">{item.name}</span>
                             </Link>
                         </Button>
