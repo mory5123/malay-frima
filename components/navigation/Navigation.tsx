@@ -79,13 +79,13 @@ const Navigation = ({ user }: NavigationProps) => {
                     <div className="text-sm font-bold">
                         {user ? (
                             <div className="flex items-center space-x-5">
-                                <Link href="/about/#about" className="flex items-center text-xs text-gray-500 hover:underline mr-4">
+                                <Link href="/about/#about" className="flex items-center text-xs sm:text-sm md:text-base text-gray-500 hover:underline mr-4 whitespace-nowrap">
                                     <HelpCircle className="w-4 h-4 mr-1" /> 初めての方へ
                                 </Link>
                                 <Link href="/blog/new" className="inline-block">
                                     <ListingButton />
                                 </Link>
-                                <Link href="/settings/profile">
+                                <Link href="/settings/profile" className="text-xs sm:text-sm md:text-base whitespace-nowrap">
                                     <div>マイページ</div>
                                 </Link>
                                 <div className="cursor-pointer" onClick={handleLogout}>
@@ -94,14 +94,14 @@ const Navigation = ({ user }: NavigationProps) => {
                             </div>
                         ) : (
                             <div className="flex items-center space-x-5">
-                                <Link href="/about/#about" className="flex items-center text-xs text-gray-500 hover:underline mr-4">
+                                <Link href="/about/#about" className="flex items-center text-xs sm:text-sm md:text-base text-gray-500 hover:underline mr-4 whitespace-nowrap">
                                     <HelpCircle className="w-4 h-4 mr-1" /> 初めての方へ
                                 </Link>
-                                <Link href="/login" className="inline-block" onClick={handleListingClick}>
+                                <Link href="/login" className="text-xs sm:text-sm md:text-base whitespace-nowrap" onClick={handleListingClick}>
                                     <ListingButton />
                                 </Link>
-                                <Link href="/login">ログイン</Link>
-                                <Link href="/signup">会員登録</Link>
+                                <Link href="/login" className="text-xs sm:text-sm md:text-base whitespace-nowrap">ログイン</Link>
+                                <Link href="/signup" className="text-xs sm:text-sm md:text-base whitespace-nowrap">会員登録</Link>
                             </div>
                         )}
                     </div>
@@ -117,13 +117,13 @@ const Navigation = ({ user }: NavigationProps) => {
                         <div className="text-sm font-bold">
                             {user ? (
                                 <div className="flex items-center space-x-5">
-                                    <Link href="/about/#about" className="flex items-center text-xs text-gray-500 hover:underline mr-4">
+                                    <Link href="/about/#about" className="flex items-center text-xs sm:text-sm md:text-base text-gray-500 hover:underline mr-4 whitespace-nowrap">
                                         <HelpCircle className="w-4 h-4 mr-1" /> 初めての方へ
                                     </Link>
                                     <Link href="/blog/new" className="inline-block">
                                         <ListingButton />
                                     </Link>
-                                    <Link href="/settings/profile">
+                                    <Link href="/settings/profile" className="text-xs sm:text-sm md:text-base whitespace-nowrap">
                                         <div>マイページ</div>
                                     </Link>
                                     <div className="cursor-pointer" onClick={handleLogout}>
@@ -132,14 +132,14 @@ const Navigation = ({ user }: NavigationProps) => {
                                 </div>
                             ) : (
                                 <div className="flex items-center space-x-5">
-                                    <Link href="/about/#about" className="flex items-center text-xs text-gray-500 hover:underline mr-4">
+                                    <Link href="/about/#about" className="flex items-center text-xs sm:text-sm md:text-base text-gray-500 hover:underline mr-4 whitespace-nowrap">
                                         <HelpCircle className="w-4 h-4 mr-1" /> 初めての方へ
                                     </Link>
-                                    <Link href="/signup" className="inline-block" onClick={handleListingClick}>
+                                    <Link href="/signup" className="text-xs sm:text-sm md:text-base whitespace-nowrap" onClick={handleListingClick}>
                                         <ListingButton />
                                     </Link>
-                                    <Link href="/login">ログイン</Link>
-                                    <Link href="/signup">会員登録</Link>
+                                    <Link href="/login" className="text-xs sm:text-sm md:text-base whitespace-nowrap">ログイン</Link>
+                                    <Link href="/signup" className="text-xs sm:text-sm md:text-base whitespace-nowrap">会員登録</Link>
                                 </div>
                             )}
                         </div>
