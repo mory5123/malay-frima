@@ -13,22 +13,41 @@ interface ShareButtonsProps {
 const ShareButtons = ({ title, url, description }: ShareButtonsProps) => {
   const text = description ? `${title} - ${description}` : title
 
-  const isMobile = () => {
+  /*const isMobile = () => {
     if (typeof window === "undefined") return false
     return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+  }*/
+
+// text は1回だけ定義すればOK。すでに上で定義してるので再定義不要。
+const handleFacebookShare = async () => {
+  const text = description ? `${title} - ${description}` : title;
+  const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(text)}`
+
+  // モバイル判定
+  const isMobile = typeof window !== "undefined" && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+  // モバイルかつ Web Share API 対応 → Facebookアプリでの共有を狙う
+  if (isMobile && typeof navigator !== "undefined" && navigator.share) {
+    try {
+      await navigator.share({
+        title,
+        text,
+        url,
+      });
+      toast.success("Facebookでシェアしました（アプリ）");
+      return;
+    } catch (err) {
+      toast.error("シェアがキャンセルされました");
+      return;
+    }
   }
 
-  const handleFacebookShare = () => {
-    const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(text)}`
-    if (isMobile()) {
-      // モバイルは location.href で開く（Facebookアプリに飛びやすく）
-      window.location.href = shareUrl
-    } else {
-      // PCは window.open（元の動作）
-      window.open(shareUrl, '_blank', 'width=600,height=400')
-    }
-    toast.success('Facebookでシェアしました')
-  }
+  // PC または非対応端末は fallback の Web共有画面へ
+  window.open(shareUrl, '_blank', 'width=600,height=400');
+  toast.success("Facebookでシェアしました");
+}
+
+
 
   const handleTwitterShare = () => {
     const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`
