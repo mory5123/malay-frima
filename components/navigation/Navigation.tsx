@@ -66,7 +66,7 @@ const Navigation = ({ user }: NavigationProps) => {
                             マレーシアの日本人向けフリマサイト</p></div>
                             
                 <div className="hidden md:flex items-center justify-between">
-                    <Link href="/" className="font-bold text-2xl text-blue-950 flex items-center">
+                    <Link href="/" className="font-bold text-base xs:text-lg sm:text-xl md:text-2xl text-blue-950 flex items-center whitespace-nowrap">
                         <Image src="/favicon.ico" alt="マレーシア・フリマのアイコン" width={39} height={39} className="mr-1"/>マレフリ
                     </Link>
 
@@ -110,7 +110,7 @@ const Navigation = ({ user }: NavigationProps) => {
                 {/* スマホ画面用のレイアウト */}
                 <div className="md:hidden">
                     <div className="flex items-center justify-between mb-4">
-                        <Link href="/" className="font-bold text-2xl text-blue-950 flex items-center">
+                        <Link href="/" className="font-bold text-base xs:text-lg sm:text-xl md:text-2xl text-blue-950 flex items-center whitespace-nowrap">
                             <Image src="/favicon.ico" alt="マレーシア・フリマのアイコン" width={39} height={39} className="mr-1"/> マレフリ
                         </Link>
 
