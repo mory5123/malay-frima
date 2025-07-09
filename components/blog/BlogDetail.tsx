@@ -103,7 +103,7 @@ const BlogDetail = ({ blog, isMyBlog }: BlogDetailProps) => {
                     <div className="border-t pt-6">
                         <ShareButtons
                             title={blog.title}
-                            url={`http://localhost:3000/blog/${blog.id}`}
+                            url={`${process.env.NEXT_PUBLIC_APP_URL}/blog/${blog.id}`}
                             description={blog.content.substring(0, 100) + '...'}
                         />
                     </div>
