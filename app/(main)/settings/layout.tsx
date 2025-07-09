@@ -54,11 +54,11 @@ const SettingsLayout = ({ children }: { children: React.ReactNode }) => {
                             key={index}
                             variant="ghost"
                             className={cn(
-                                "w-full justify-start font-bold py-1 px-2 sm:py-2 sm:px-4",
+                                "w-full justify-start font-bold py-1 px-2 sm:py-2 sm:px-4 min-w-0",
                                 pathname === item.href && "bg-gray-100"
                             )}
                         >
-                            <Link href={item.href} className="flex items-center text-xs sm:text-base whitespace-normal">
+                            <Link href={item.href} className="flex items-center text-xs sm:text-base whitespace-normal w-full">
                                 <item.icon className="inline-block w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                                 {item.name}
                             </Link>
