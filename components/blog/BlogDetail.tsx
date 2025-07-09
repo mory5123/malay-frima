@@ -70,7 +70,7 @@ const BlogDetail = ({ blog, isMyBlog }: BlogDetailProps) => {
 
     return (
         <div className="space-y-8">
-            <div className="grid grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                 <div className="col-span-2 space-y-5">
                     <div className="flex justify-between items-center">
                         <div className="text-sm text-gray-500">
@@ -118,7 +118,7 @@ const BlogDetail = ({ blog, isMyBlog }: BlogDetailProps) => {
                     </div>
                     
                     {/* SNSシェアボタン */}
-                    <div className="border-t pt-6">
+                    <div className="border-t pt-2">
                         <ShareButtons
                             title={blog.title}
                             url={`${process.env.NEXT_PUBLIC_APP_URL}/blog/${blog.id}`}
@@ -148,6 +148,7 @@ const BlogDetail = ({ blog, isMyBlog }: BlogDetailProps) => {
 
                     <FormError message={error} />
                 </div>
+                
                 <div className="col-span-1">
                     <div className="border rounded flex flex-col items-center justify-center space-y-4 p-5">
                         <div className="w-[100px] h-[100px] rounded-full overflow-hidden flex-shrink-0">

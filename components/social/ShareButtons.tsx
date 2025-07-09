@@ -46,7 +46,7 @@ const ShareButtons = ({ title, url, description }: ShareButtonsProps) => {
 
   return (
     <div className="flex flex-col space-y-4">
-      <h3 className="text-lg font-semibold text-gray-800">この投稿をシェア</h3>
+      <h3 className="text-sm font-semibold text-gray-800">この投稿をシェア</h3>
       <div className="flex space-x-3">
         {/* Twitterシェアボタン */}
         <Button
