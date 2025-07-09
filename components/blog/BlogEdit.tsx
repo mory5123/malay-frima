@@ -24,6 +24,7 @@ import ImageUploading, { ImageListType } from "react-images-uploading"
 import toast from "react-hot-toast"
 import Image from "next/image"
 import FormError from "@/components/auth/FormError"
+import imageCompression from "browser-image-compression"
 
 interface BlogEditProps {
     blog: BlogType
@@ -132,16 +133,24 @@ const BlogEdit = ({ blog }: BlogEditProps) => {
     }
 
     // 画像アップロード
-    const onChangeImage = (imageList: ImageListType) => {
-        // ファイルサイズチェック
-        for (const image of imageList) {
-            if (image.file && image.file.size > 2 * 1024 * 1024) {
-                setError("ファイルサイズは2MBを超えることはできません")
-                return
+    const onChangeImage = async (imageList: ImageListType) => {
+        const compressedList: ImageListType = []
+        for (const img of imageList) {
+            if (img.file) {
+                const options = {
+                    maxSizeMB: 1,
+                    maxWidthOrHeight: 1280,
+                    useWebWorker: true,
+                }
+                const compressed = await imageCompression(img.file, options)
+                const dataUrl = await imageCompression.getDataUrlFromFile(compressed)
+                compressedList.push({ file: compressed, dataURL: dataUrl })
+            } else if (img.dataURL) {
+                // 既存画像（URLのみ）
+                compressedList.push(img)
             }
         }
-
-        setImageUpload(imageList)
+        setImageUpload(compressedList)
     }
 
     return (
@@ -154,7 +163,7 @@ const BlogEdit = ({ blog }: BlogEditProps) => {
                     onChange={onChangeImage}
                     maxNumber={3}
                     multiple
-                    acceptType={["jpg", "png", "jpeg"]}
+                    acceptType={["jpg", "jpeg", "png", "webp", "heic"]}
                 >
                     {({ imageList, onImageUpload, onImageUpdate, onImageRemove, dragProps }) => (
                         <div className="flex flex-col items-center justify-center">

@@ -23,6 +23,7 @@ import ImageUploading, { ImageListType } from "react-images-uploading"
 import toast from "react-hot-toast"
 import Image from "next/image"
 import FormError from "@/components/auth/FormError"
+import imageCompression from "browser-image-compression"
 
 interface BlogNewProps {
     userId: string
@@ -98,15 +99,21 @@ const BlogNew = ({ userId }: BlogNewProps) => {
     }
 
     // 画像アップロード
-    const onChangeImage = (imageList: ImageListType) => {
-        const maxFileSize = 2 * 1024 * 1024
+    const onChangeImage = async (imageList: ImageListType) => {
+        const compressedList: ImageListType = []
         for (const img of imageList) {
-            if (img.file && img.file.size > maxFileSize) {
-                setError("ファイルサイズは2MBを超えることはできません")
-                return
+            if (img.file) {
+                const options = {
+                    maxSizeMB: 1,
+                    maxWidthOrHeight: 1280,
+                    useWebWorker: true,
+                }
+                const compressed = await imageCompression(img.file, options)
+                const dataUrl = await imageCompression.getDataUrlFromFile(compressed)
+                compressedList.push({ file: compressed, dataURL: dataUrl })
             }
         }
-        setImageUpload(imageList)
+        setImageUpload(compressedList)
     }
 
     return (
@@ -119,7 +126,7 @@ const BlogNew = ({ userId }: BlogNewProps) => {
                     value={imageUpload}
                     onChange={onChangeImage}
                     maxNumber={3}
-                    acceptType={["jpg", "png", "jpeg"]}
+                    acceptType={["jpg", "jpeg", "png", "webp", "heic"]}
                 >
                     {({ imageList, onImageUpload, onImageUpdate, onImageRemove, dragProps }) => (
                         <div className="flex flex-col items-center justify-center">
