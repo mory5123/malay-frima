@@ -76,9 +76,9 @@ const BlogDetail = ({ blog, isMyBlog }: BlogDetailProps) => {
                         <div className="text-sm text-gray-500">
                             {"last update: " + format(new Date(blog.updated_at), "yyyy/MM/dd")}
                         </div>
-                        <div className="flex items-center space-x-1">
+                        <div className="flex items-center space-x-1 border border-gray-400 rounded px-2 py-1">
                             <span className="text-xs text-gray-500">お気に入り</span>
-                            <FavoriteButton postId={blog.id} />
+                            <FavoriteButton postId={blog.id} className="text-gray-500" />
                         </div>
                     </div>
 

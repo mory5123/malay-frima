@@ -37,6 +37,7 @@ const handleFacebookShare = async () => {
       toast.success("Facebookでシェアしました（アプリ）");
       return;
     } catch (err) {
+      console.error("Share error:", err)
       toast.error("シェアがキャンセルされました");
       return;
     }

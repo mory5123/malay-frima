@@ -8,9 +8,10 @@ import toast from "react-hot-toast"
 
 interface FavoriteButtonProps {
   postId: string
+  className?: string
 }
 
-const FavoriteButton = ({ postId }: FavoriteButtonProps) => {
+const FavoriteButton = ({ postId, className }: FavoriteButtonProps) => {
   const [isFavorite, setIsFavorite] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const router = useRouter()
@@ -93,7 +94,7 @@ const FavoriteButton = ({ postId }: FavoriteButtonProps) => {
         isFavorite 
           ? 'text-red-500 hover:text-red-600' 
           : 'text-gray-400 hover:text-red-500'
-      }`}
+      } ${className || ''}`}
     >
       <Heart className={`w-5 h-5 ${isFavorite ? 'fill-current' : ''}`} />
     </button>
