@@ -141,7 +141,7 @@ const BlogNew = ({ userId }: BlogNewProps) => {
                                     ファイル選択またはドラッグ＆ドロップ（最大3枚）
                                 </div>
                                 <div className="text-gray-400 text-xs">
-                                    ファイル形式：jpg / jpeg / png
+                                    ファイル形式：jpg / jpeg / png / webp / heic
                                 </div>
                                 <div className="text-gray-400 text-xs">
                                     ファイルサイズ：2MBまで

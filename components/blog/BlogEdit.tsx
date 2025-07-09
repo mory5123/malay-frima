@@ -177,10 +177,10 @@ const BlogEdit = ({ blog }: BlogEditProps) => {
                                         ファイル選択またはドラッグ＆ドロップ
                                     </div>
                                     <div className="text-gray-400 text-xs">
-                                        ファイル形式：jpg / jpeg / png
+                                        ファイル形式：jpg / jpeg / png / webp / heic
                                     </div>
-                                    <div className="text-gray-400 text-xs">
-                                        ファイルサイズ：2MBまで（最大3枚）
+                                    <div className="text-gray-400 text-xs">  
+                                    ファイルサイズ：１枚につき10MBまで
                                     </div>
                                 </button>
                             )}
