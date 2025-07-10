@@ -11,6 +11,7 @@ import SearchBox from "@/components/search/SearchBox"
 import toast from 'react-hot-toast'
 import { HelpCircle } from "lucide-react"
 
+//Supabaseライブラリから直接User型を取る
 interface NavigationProps {
     user: User | null
 }
@@ -57,7 +58,7 @@ const Navigation = ({ user }: NavigationProps) => {
     // トップページかどうかを判定
     const isHomePage = pathname === "/" || pathname === "/page"
 
-        return (
+    return (
     <header className="fixed top-0 left-0 right-0 bg-white border-b z-50">
         <div className="mx-auto max-w-screen-lg px-2 py-2">
         {/* サイト説明 */}

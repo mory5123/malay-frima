@@ -3,7 +3,7 @@
 "use client"
 
 import { useSearchParams } from "next/navigation"
-import { useEffect, useState } from "react"
+import { useEffect, useState,useMemo } from "react"
 import { createClient } from "@/utils/supabase/client"
 import BlogItem from "./BlogItem"
 import Loading from "@/app/loading"
@@ -14,7 +14,8 @@ const PAGE_SIZE = 25
 
 export default function BlogListClient() {
     const searchParams = useSearchParams()
-    const searchQuery = searchParams.get("search") || ""
+    //const searchQuery = searchParams.get("search") || ""
+    const searchQuery = useMemo(() => searchParams.get("search") || "", [searchParams])
 
     const [blogs, setBlogs] = useState<BlogItemProps[]>([])
     const [loading, setLoading] = useState(true)
@@ -22,16 +23,14 @@ export default function BlogListClient() {
     const [totalCount, setTotalCount] = useState(0)
 
     useEffect(() => {
+
         const fetchData = async () => {
             setLoading(true)
             const supabase = await createClient()
 
             let query = supabase
                 .from("blogs")
-                .select(
-                    `*, profiles ( name, avatar_url )`,
-                    { count: "exact" }
-                )
+                .select(`*, profiles ( name, avatar_url )`, { count: "exact" })
 
             if (searchQuery) {
                 query = query.or(`title.ilike.%${searchQuery}%,content.ilike.%${searchQuery}%,location.ilike.%${searchQuery}%`)
@@ -44,7 +43,9 @@ export default function BlogListClient() {
                 .order("updated_at", { ascending: false })
                 .range(from, to)
 
-            if (!error) {
+            if (error) {
+                console.error("投稿の取得エラー:", error.message)
+            } else {
                 setBlogs(data || [])
                 setTotalCount(count || 0)
             }
