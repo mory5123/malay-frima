@@ -176,7 +176,7 @@ const Navigation = ({ user }: NavigationProps) => {
             </div>
 
             {/* 2行目：投稿・ログイン・会員登録 */}
-            <div className="flex items-center justify-start mb-2">
+            <div className="flex items-center justify-end mb-2">
                 {user ? (
                     <div className="flex items-center space-x-4">
                         <Link href="/blog/new" className="inline-block">
