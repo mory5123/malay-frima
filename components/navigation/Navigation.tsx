@@ -149,82 +149,79 @@ const Navigation = ({ user }: NavigationProps) => {
 
         {/* スマホ画面（md未満） */}
         <div className="md:hidden">
+            {/* 1行目：ロゴと初めての方へ */}
             <div className="flex items-center justify-between mb-2">
-            {/* ロゴ */}
-            <Link
-                href="/"
-                className="font-bold text-base xs:text-lg sm:text-xl text-blue-950 flex items-center whitespace-nowrap"
-            >
-                <Image
-                src="/favicon.ico"
-                alt="マレーシア・フリマのアイコン"
-                width={39}
-                height={39}
-                className="mr-1"
-                />
-                マレフリ
-            </Link>
+                {/* ロゴ */}
+                <Link
+                    href="/"
+                    className="font-bold text-base xs:text-lg sm:text-xl text-blue-950 flex items-center whitespace-nowrap"
+                >
+                    <Image
+                        src="/favicon.ico"
+                        alt="マレーシア・フリマのアイコン"
+                        width={39}
+                        height={39}
+                        className="mr-1"
+                    />
+                    マレフリ
+                </Link>
 
-            {/* メニュー */}
-            <div className="text-sm font-bold">
+                {/* 初めての方へ */}
+                <Link
+                    href="/about/#about"
+                    className="flex items-center text-xs text-gray-500 hover:underline whitespace-nowrap"
+                >
+                    <HelpCircle className="w-4 h-4 mr-1" /> 初めての方へ
+                </Link>
+            </div>
+
+            {/* 2行目：投稿・ログイン・会員登録 */}
+            <div className="flex items-center justify-center mb-2">
                 {user ? (
-                <div className="flex items-center space-x-5">
-                    <Link
-                    href="/about/#about"
-                    className="flex items-center text-xs text-gray-500 hover:underline mr-4 whitespace-nowrap"
-                    >
-                    <HelpCircle className="w-4 h-4 mr-1" /> 初めての方へ
-                    </Link>
-                    <Link href="/blog/new" className="inline-block">
-                    <ListingButton />
-                    </Link>
-                    <Link
-                    href="/settings/profile"
-                    className="text-xs sm:text-sm md:text-base whitespace-nowrap"
-                    >
-                    <div>マイページ</div>
-                    </Link>
-                    <div className="cursor-pointer" onClick={handleLogout}>
-                    <LogOut className="h-5 w-5" />
+                    <div className="flex items-center space-x-4">
+                        <Link href="/blog/new" className="inline-block">
+                            <ListingButton />
+                        </Link>
+                        <Link
+                            href="/settings/profile"
+                            className="text-xs sm:text-sm md:text-base whitespace-nowrap"
+                        >
+                            <div>マイページ</div>
+                        </Link>
+                        <div className="cursor-pointer" onClick={handleLogout}>
+                            <LogOut className="h-5 w-5" />
+                        </div>
                     </div>
-                </div>
                 ) : (
-                <div className="flex items-center space-x-5">
-                    <Link
-                    href="/about/#about"
-                    className="flex items-center text-xs text-gray-500 hover:underline mr-4 whitespace-nowrap"
-                    >
-                    <HelpCircle className="w-4 h-4 mr-1" /> 初めての方へ
-                    </Link>
-                    <Link
-                    href="/signup"
-                    className="text-xs sm:text-sm md:text-base whitespace-nowrap"
-                    onClick={handleListingClick}
-                    >
-                    <ListingButton />
-                    </Link>
-                    <Link
-                    href="/login"
-                    className="text-xs sm:text-sm md:text-base whitespace-nowrap"
-                    >
-                    ログイン
-                    </Link>
-                    <Link
-                    href="/signup"
-                    className="text-xs sm:text-sm md:text-base whitespace-nowrap"
-                    >
-                    会員登録
-                    </Link>
-                </div>
+                    <div className="flex items-center space-x-4">
+                        <Link
+                            href="/signup"
+                            className="text-xs sm:text-sm md:text-base whitespace-nowrap"
+                            onClick={handleListingClick}
+                        >
+                            <ListingButton />
+                        </Link>
+                        <Link
+                            href="/login"
+                            className="text-xs sm:text-sm md:text-base whitespace-nowrap"
+                        >
+                            ログイン
+                        </Link>
+                        <Link
+                            href="/signup"
+                            className="text-xs sm:text-sm md:text-base whitespace-nowrap"
+                        >
+                            会員登録
+                        </Link>
+                    </div>
                 )}
             </div>
-            </div>
 
-            {/* 検索ボックス（2段目） */}
+            {/* 3行目：検索ボックス */}
             {isHomePage && (
-            <div className="block md:hidden mb-2">
-                <SearchBox />
-            </div>
+                <div className="block md:hidden mb-2">
+                    <SearchBox />
+                </div>
             )}
         </div>
         </div>

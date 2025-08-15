@@ -46,7 +46,32 @@ const SettingsLayout = ({ children }: { children: React.ReactNode }) => {
 
     return (
         <div className="mx-auto max-w-screen-md">
-            <div className="grid grid-cols-3 gap-3">
+            {/* スマホ画面（md未満）：ナビゲーションを上部に1行ずつ表示 */}
+            <div className="md:hidden">
+                <div className="grid grid-cols-2 gap-2 mb-6">
+                    {subNavigation.map((item, index) => (
+                        <Button
+                            asChild
+                            key={index}
+                            variant="ghost"
+                            className={cn(
+                                "w-full justify-start font-bold py-2 px-3 min-w-0",
+                                pathname === item.href && "bg-gray-100"
+                            )}
+                        >
+                            <Link href={item.href} className="grid grid-cols-[auto,1fr] items-center text-xs whitespace-normal w-full min-w-0">
+                                <item.icon className="w-4 h-4 mr-2" />
+                                <span className="break-words w-full min-w-0 max-w-full truncate">{item.name}</span>
+                            </Link>
+                        </Button>
+                    ))}
+                </div>
+                {/* 中身を下部に表示 */}
+                <div className="w-full">{children}</div>
+            </div>
+
+            {/* PC画面（md以上）：従来の左右レイアウト */}
+            <div className="hidden md:grid grid-cols-3 gap-3">
                 <div className="col-span-1 space-y-2">
                     {subNavigation.map((item, index) => (
                         <Button

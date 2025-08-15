@@ -118,7 +118,7 @@ const BlogNew = ({ userId }: BlogNewProps) => {
 
     return (
         <div className="mx-auto max-w-screen-md">
-            <div className="font-bold text-xl text-center mb-10">出品投稿</div>
+            <div className="font-bold text-xl text-center mb-10">新規の投稿</div>
 
             <div className="mb-5">
                 <ImageUploading
