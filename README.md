@@ -1,8 +1,6 @@
 # マレフリ（マレーシア・フリマ）
 
-🌐 [アプリはこちら](https://malay-frima.vercel.app/)
-
-[アプリはこちら](https://malay-frima.vercel.app/)  
+🌐[アプリはこちら](https://malay-frima.vercel.app/)  
 `https://malay-frima.vercel.app/`
 
 ---
