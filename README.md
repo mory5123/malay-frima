@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# マレフリ（マレーシア・フリマ）
 
-## Getting Started
+🌐 [アプリはこちら](https://malay-frima.vercel.app/)
 
-First, run the development server:
+[アプリはこちら](https://malay-frima.vercel.app/)  
+`https://malay-frima.vercel.app/`
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 デモアカウント
+- **ID**: `frimatest@neko2.net`  
+- **Password**: `testuser`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📌 概要
+海外在住者（例：マレーシア）向けのフリマサイト。  
+物の売買・譲渡だけでなく、習い事のメンバー募集なども可能。  
 
-## Learn More
+👉 海外の特定地域における「ジモティー」のようなサービス。
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 💡 作ったキッカケ
+海外滞在には特有の課題があります。  
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- 日本の物が手に入らない  
+- 子供の学校や住む地域の悩み  
+- 急な引っ越しでの荷物処分  
 
-## Deploy on Vercel
+現地では情報やモノ、仲間が限られており、それらを解決できるサイトが必要でした。  
+従来は掲示板やFacebookグループで情報交換が行われてきましたが、特化型のサービスは少ない状況です。  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+また、物流に不安がある国も多いため、**メルカリのような配送前提ではなく、対面をベースにしたサービス**にしました。
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🛠 使用技術
+
+### フロントエンド
+- Next.js  
+- React  
+- TypeScript  
+- Tailwind CSS  
+
+### バックエンド
+- Supabase (DB / Auth / Storage)  
+
+### 外部API・ライブラリ
+- Google OAuth（認証）  
+- Twilio（SMS認証）  
+- NodeMailer（メール送信）  
+
+### インフラ
+- Vercel  
+
+---
+
+## 🔮 今後の展開
+- ユーザー同士の評価機能、フォロー機能、購入履歴、チャットでの問い合わせ、投稿の下書き保存  
+- 検索画面の強化（外部API例: Algolia）  
+- 投稿ロケーションのGoogle Map表示  
+- 写真・動画の拡充（外部API例: Cloudinary）  
+- 本人確認の強化（外部API例: TRUSTDOCK）  
+- AIレコメンド機能の実装  
+- Stripeなどによる課金サービスの追加  
+
+---
