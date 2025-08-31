@@ -255,7 +255,7 @@ export default function About() {
                 <div className="space-y-0">
             <p className="flex items-center gap-4 flex-wrap">
                 <strong>お問い合わせ窓口：</strong>
-                <span>support@example.com</span>
+                <span>info@malay-frima.com</span>
                 <a
                 href="https://wa.me/60179397130"
                 target="_blank"
@@ -271,7 +271,7 @@ export default function About() {
                 ADA office, Straits Quay, Jalan Seri Tanjung Pinang Tanjung Tokong, Seri Tanjung Pinang, 10470 Pulau Pinang
             </p><br/>
             <p>※通常、2〜3営業日以内にご返信いたします。</p>
-            <p>※メール、Whatappのいずれかにご連絡頂ければ幸いです。</p>
+            <p>※メール、Whatsappのいずれかにご連絡頂ければ幸いです。</p>
             <p>※当アプリに関するご意見・ご要望もお気軽にお寄せください。</p>
             <br/>
             <p>
