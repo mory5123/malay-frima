@@ -254,8 +254,13 @@ export default function About() {
                 </div>
                 <div className="space-y-0">
             <p className="flex items-center gap-4 flex-wrap">
-                <strong>お問い合わせ窓口：</strong>
-                <span>info@malay-frima.com</span>
+            <strong>お問い合わせ窓口：</strong>
+                <a
+                    href="mailto:info@malay-frima.com"
+                    className="text-blue-600 hover:underline"
+                >
+                    info@malay-frima.com
+                </a>
                 <a
                 href="https://wa.me/60179397130"
                 target="_blank"
